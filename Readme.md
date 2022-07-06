@@ -60,3 +60,5 @@ python app.py
 - Install flask:https://shigeblog221.com/python-flask1/
 
 - Virtual env:https://qiita.com/psychoroid/items/6646d45d6a019f5cf16f
+
+-
