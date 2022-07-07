@@ -16,13 +16,18 @@ class Post(db.Model):
     due = db.Column(db.DateTime, nullable=False)
 
 
+@app.before_first_request
+def init():
+    db.create_all()
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         posts = Post.query.all()
         return render_template('index.html', posts=posts)
     else:
-        title = request.form.get('title')
+        title = request.form('title')
         detail = request.form.get('detail')
         due = request.form.get('due')
 
