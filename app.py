@@ -15,8 +15,11 @@ class Post(db.Model):
     detail = db.Column(db.String(100))
     due = db.Column(db.DateTime, nullable=False)
 
+@app.before_first_request
+def init():
+    db.create_all()
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == 'GET':
         posts = Post.query.all()
