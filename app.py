@@ -19,7 +19,7 @@ class Post(db.Model):
 def init():
     db.create_all()
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         posts = Post.query.all()
@@ -43,7 +43,7 @@ def create():
     return render_template('create.html')
 
 @app.route('/detail/<int:id>')
-def read(id):
+def get_detail(id):
     post = Post.query.get(id)
     return render_template('detail.html', post=post)
 
