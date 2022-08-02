@@ -4,7 +4,7 @@ To do lists
 
 ## Description
 
-I make a simple webapp to practice to programming.
+I'm making a simple webapp to practice to programming.
 
 ## Reference
 

@@ -15,6 +15,9 @@ class Post(db.Model):
     detail = db.Column(db.String(100))
     due = db.Column(db.DateTime, nullable=False)
 
+@app.before_first_request
+def init():
+    db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -39,6 +42,10 @@ def index():
 def create():
     return render_template('create.html')
 
+@app.route('/detail/<int:id>')
+def get_detail(id):
+    post = Post.query.get(id)
+    return render_template('detail.html', post=post)
 
 if __name__ == '__main__':
     app.run(debug=True)
