@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
 <a class="btn btn-info btn-lg m-5" href="/create">CREATE NEW TASK</a>
+<div class="alert alert-success w-50 mb-3 m-auto" role="alert">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+</div>
 {% for post in posts %}
 <div class="card w-50 mb-3" style="margin: auto;">
     <div class="card-body">

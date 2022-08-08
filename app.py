@@ -1,13 +1,13 @@
 from datetime import datetime, date
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
-
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,6 +35,7 @@ def index():
         db.session.add(new_post)
         db.session.commit()
 
+        flash('新しいリストを投稿しました。')
         return redirect('/')
 
 
@@ -48,6 +49,7 @@ def delete(id):
     
     db.session.delete(post)
     db.session.commit()
+    flash('リストを削除しました。')
     return redirect('/')
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -61,6 +63,7 @@ def update(id):
         post.due = datetime.strptime(request.form.get('due'), '%Y-%m-%d')
         
         db.session.commit()
+        flash('リストを編集しました。')
         return redirect('/')
         
 @app.route('/detail/<int:id>')
