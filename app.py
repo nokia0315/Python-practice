@@ -38,7 +38,6 @@ def index():
         flash('新しいリストを投稿しました。')
         return redirect('/')
 
-
 @app.route('/create')
 def create():
     return render_template('create.html')
