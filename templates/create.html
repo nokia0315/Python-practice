@@ -4,7 +4,7 @@
 <form class="m-5" action="/" method="POST">
   <div class="form-group pd-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" name="title">
+    <input type="text" class="form-control" name="title" required>
   </div>
   <div class="mb-3 pd-3">
     <label for="detail" class="form-label">Detail</label>
@@ -12,7 +12,7 @@
   </div>
   <div class="mb-3 pd-3">
     <label for="due">Due</label>
-    <input type="date" name="due" required>
+    <input type="date" name="due">
   </div>
   <a class="btn btn-outline-primary" href="/" role="button">Return</a> 
   <button type="submit" class="btn btn-primary">Create</button>
