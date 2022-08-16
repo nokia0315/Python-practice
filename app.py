@@ -35,7 +35,7 @@ def index():
         db.session.add(new_post)
         db.session.commit()
 
-        flash('新しいリストを投稿しました。')
+        flash('新しいアイテムを追加しました。')
         return redirect('/')
 
 @app.route('/create')
