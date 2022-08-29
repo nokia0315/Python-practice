@@ -48,7 +48,7 @@ def delete(id):
     
     db.session.delete(post)
     db.session.commit()
-    flash('リストを削除しました。')
+    flash('アイテムを削除しました。')
     return redirect('/')
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -62,7 +62,7 @@ def update(id):
         post.due = datetime.strptime(request.form.get('due'), '%Y-%m-%d')
         
         db.session.commit()
-        flash('リストを編集しました。')
+        flash('アイテムを編集しました。')
         return redirect('/')
         
 @app.route('/detail/<int:id>')
