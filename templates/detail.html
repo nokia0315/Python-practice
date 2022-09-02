@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h2>{{ post.title }}</h2>
-<p>{{ post.detail }}</p>
-<p>{{ post.due.date() }}</p>
+<h2 class="m-5 text-center">詳細</h2>
+<div class="card w-50 mb-3 m-auto">
+    <div class="card-body">
+      <h2 class="card-title">タイトル：{{ post.title }}<span class="m-3 fs-5">期限：{{ post.due.date() }}</span></h2>
+      <p>{{ post.detail }}</p>
+      <a class="btn btn-outline-success" href="/" role="button">Return</a> 
+      <a class="btn btn-success" href="/update/{{ post.id }}">Update</a>
+    </div>
+  </div>
 {% endblock %}
